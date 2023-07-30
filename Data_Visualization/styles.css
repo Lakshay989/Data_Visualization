@@ -1,0 +1,19 @@
+div1 {
+    background-color: lightgray;
+    border: 2px solid black;
+    padding: 5px;
+    position: fixed;
+    left: 5px;
+    top: 5px;
+    bottom: 5px;
+    width: 250px;
+}
+div2 {
+    border: 2px solid black;
+    position: fixed;
+    padding: 5px;
+    left: 266px;
+    top: 5px;
+    bottom: 5px;
+    right: 5px;
+}
