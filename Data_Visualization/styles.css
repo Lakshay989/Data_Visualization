@@ -17,3 +17,21 @@ div2 {
     bottom: 5px;
     right: 5px;
 }
+
+.game-list-container {
+    width: 250px;
+    background-color: #f90303;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .game-list-container h1 {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0 0 10px;
+  }
+  
+  .scrollable {
+    overflow-y: auto;
+    max-height: calc(100vh - 60px); /* Account for h1 and padding */
+  }
