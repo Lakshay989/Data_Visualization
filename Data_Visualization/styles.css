@@ -35,3 +35,13 @@ div2 {
     overflow-y: auto;
     max-height: calc(100vh - 60px); /* Account for h1 and padding */
   }
+
+  .selected {
+      font-style: italic;
+      color: lightblue;
+  }
+
+.deselected {
+    color: black;
+    font-style: normal;
+}
