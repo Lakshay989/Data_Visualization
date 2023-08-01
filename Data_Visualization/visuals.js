@@ -8,23 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const headers = rows[0].split(',');
             console.log(headers);
 
-            // Replace 'desired_column_name' with the header of the column you want to extract
-            // const desiredColumnIndex = headers.indexOf('Name');
-            // if (desiredColumnIndex === -1) {
-            //   console.error('Column not found in CSV data.');
-            //   return;
-            // }
-
-            // const gameListElement = document.getElementById('gameList');
-            // let extractedData = '';
-
-            // for (let i = 1; i < rows.length; i++) {
-            //   const values = rows[i].split(',');
-            //   if (values.length > desiredColumnIndex) {
-            //     extractedData += values[desiredColumnIndex];
-            //   }
-            // }
-
             let gameListData = [];
             for (let i = 1; i < rows.length; i++) {
                 const values = rows[i].split(',');
