@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
-const width = 1000 ;
+const width = 1100 ;
 const height = 650 ;
 
 const svg = d3.select('#mapContainer').append('svg').attr('width', width).attr('height', height);
 
-const projection = d3.geoMercator().scale(140).translate([width/2, height/2]) ;
+const projection = d3.geoMercator().scale(140).translate([width/2, height/1.6]) ;
 
 const path = d3.geoPath(projection) ;
 
