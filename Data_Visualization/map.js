@@ -1,3 +1,5 @@
+// import { handleNAClick, handleEUClick, handleJAClick } from './visuals.js';
+
 document.addEventListener('DOMContentLoaded', () => {
 const width = 1100 ;
 const height = 650 ;
@@ -14,21 +16,23 @@ var circleNA = circle_grp.append("circle")
                 .attr("cx", 280)
                 .attr("cy", 255)
                 .attr("r", 100).attr("fill", "red").attr("stroke" , "black").attr("stroke-width","3").attr("fill-opacity" , .35);
+circleNA.on("click", handleNAClick); //not calling the function
 
 var circleEU = circle_grp.append("circle")
                 .attr("cx", 610)
                 .attr("cy", 230)
                 .attr("r", 80).attr("fill", "blue").attr("stroke" , "black").attr("stroke-width","3").attr("fill-opacity" , .35);
+circleEU.on("click", handleEUClick); //not calling the function
 
 var circleJP = circle_grp.append("circle")
                 .attr("cx", 890)
                 .attr("cy", 310)
                 .attr("r", 25).attr("fill", "green").attr("stroke" , "black").attr("stroke-width","3").attr("fill-opacity" , .35);
-
+circleJP.on("click", handleJAClick); //not calling the function
 
 
 d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-110m.json')
-        .then(data => 
+        .then(data =>
         {
             const countries = topojson.feature(data,data.objects.countries);
 
