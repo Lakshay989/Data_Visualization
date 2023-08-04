@@ -30,7 +30,6 @@ var circleJP = circle_grp.append("circle")
                 .attr("r", 25).attr("fill", "green").attr("stroke" , "black").attr("stroke-width","3").attr("fill-opacity" , .35);
 circleJP.on("click", handleJAClick); //not calling the function
 
-
 d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-110m.json')
         .then(data =>
         {
