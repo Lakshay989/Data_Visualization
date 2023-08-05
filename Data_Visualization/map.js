@@ -12,28 +12,35 @@ const projection = d3.geoMercator().scale(140).translate([width/2, height/1.6]) 
 
 const path = d3.geoPath(projection) ;
 
-const g = svg.append('g') ;
+const g = svg.append('g').attr('id','map-paths') ;
 const circle_grp = svg.append('g');
 
 var circleNA = circle_grp.append("circle")
                 .attr("cx", 280)
                 .attr("cy", 255)
-                .attr("r", 100).attr("fill", "red").attr("stroke" , "black").attr("stroke-width","3").attr("fill-opacity" , .35);
-circleNA.on("click", handleNAClick); //not calling the function
+                .attr("r", 100)
+                .attr("fill", "red")
+                .attr("stroke" , "black")
+                .attr("stroke-width","3")
+                .attr("fill-opacity" , .35)
+                .attr('id',"NA");
+
+                circleNA.on("click", handleNAClick); //not calling the function
 
 var circleEU = circle_grp.append("circle")
                 .attr("cx", 610)
                 .attr("cy", 230)
                 .attr("r", 80).attr("fill", "blue").attr("stroke" , "black").attr("stroke-width","3").attr("fill-opacity" , .35);
-circleEU.on("click", handleEUClick); //not calling the function
+circleEU.on("click", handleEUClick).attr('id','EU'); //not calling the function
 
 var circleJP = circle_grp.append("circle")
                 .attr("cx", 890)
                 .attr("cy", 310)
-                .attr("r", 30).attr("fill", "green").attr("stroke" , "black").attr("stroke-width","3").attr("fill-opacity" , .35);
+                .attr("r", 30).attr("fill", "green").attr("stroke" , "black").attr("stroke-width","3").attr("fill-opacity" , .35)
+                .attr('id','JP');
 
 
-circleJP.on("click", handleJAClick); //not calling the function
+//circleJP.on("click", handleJAClick); //not calling the function
 textgrp = d3.select('svg').append('g');
 d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-110m.json')
         .then(data =>
@@ -48,26 +55,26 @@ d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-110m.json')
 function selectedGameDisplay(selectedGames)
 {
     
-    // const text_grp = d3.select('svg').append('g');
+    const text_grp = d3.select('svg').append('g');
     let values = [selectedGames[1],selectedGames[2],selectedGames[3]]
-    console.log(values)
-    // var textNA = text_grp.join("text").attr("x" , 20).attr("y" , 40).attr("class", "small").data(selectedGames).text("YOLO");
+    // console.log(values)
+    // var textNA = text_grp.join("text").attr("x" , 20).attr("y" , 40).attr("class", "small").data(selectedGames).text("TESTING");
     textgrp.selectAll('text').data(values).join('text').attr("font-size", "32").attr('x',(d,i)=>{
                     if(i==0){
                         return 200;
                     }
                     if(i==1)
-                        return 560;
+                        return 550;
                     return 865;
             }).attr('y',(d,i)=>{
                 if (i==0)
-                    return 285;
+                    return 280;
                 if (i==1)
                     return 250;
                 return 320;
             }).attr("font-size", (d,i)=>{
                 if (i==0)
-                return 96;
+                return 78;
             if (i==1)
                 return 64;
             return 28;
