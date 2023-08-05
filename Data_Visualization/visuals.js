@@ -38,7 +38,6 @@ document.addEventListener('DOMContentLoaded', () => {
       
             }
             //console.log(gameListData);
-            
 
             //gameListElement.innerHTML = extractedData;
             let gameList = d3.select("div1");
@@ -47,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     enter.append('p').text((d, i) => d[0]).on("click", handleGameClick)
                 }
             );
-            // gameList.on("click", handleEUClick);
+            //gameList.on("click", handleEUClick);
             
         })
         .catch(error => console.error('Error fetching the CSV file:', error));
