@@ -1,5 +1,7 @@
 // import { handleNAClick, handleEUClick, handleJAClick } from './visuals.js';
 
+// const { text } = require("d3");
+let textgrp = null;
 document.addEventListener('DOMContentLoaded', () => {
 const width = 1100 ;
 const height = 650 ;
@@ -12,6 +14,7 @@ const path = d3.geoPath(projection) ;
 
 const g = svg.append('g') ;
 const circle_grp = svg.append('g');
+
 var circleNA = circle_grp.append("circle")
                 .attr("cx", 280)
                 .attr("cy", 255)
@@ -27,9 +30,11 @@ circleEU.on("click", handleEUClick); //not calling the function
 var circleJP = circle_grp.append("circle")
                 .attr("cx", 890)
                 .attr("cy", 310)
-                .attr("r", 25).attr("fill", "green").attr("stroke" , "black").attr("stroke-width","3").attr("fill-opacity" , .35);
-circleJP.on("click", handleJAClick); //not calling the function
+                .attr("r", 30).attr("fill", "green").attr("stroke" , "black").attr("stroke-width","3").attr("fill-opacity" , .35);
 
+
+circleJP.on("click", handleJAClick); //not calling the function
+textgrp = d3.select('svg').append('g');
 d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-110m.json')
         .then(data =>
         {
@@ -40,3 +45,32 @@ d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-110m.json')
     .catch(error => console.error('Error fetching the map data:', error));
     });
     
+function selectedGameDisplay(selectedGames)
+{
+    
+    // const text_grp = d3.select('svg').append('g');
+    let values = [selectedGames[1],selectedGames[2],selectedGames[3]]
+    console.log(values)
+    // var textNA = text_grp.join("text").attr("x" , 20).attr("y" , 40).attr("class", "small").data(selectedGames).text("YOLO");
+    textgrp.selectAll('text').data(values).join('text').attr("font-size", "32").attr('x',(d,i)=>{
+                    if(i==0){
+                        return 200;
+                    }
+                    if(i==1)
+                        return 560;
+                    return 865;
+            }).attr('y',(d,i)=>{
+                if (i==0)
+                    return 285;
+                if (i==1)
+                    return 250;
+                return 320;
+            }).attr("font-size", (d,i)=>{
+                if (i==0)
+                return 96;
+            if (i==1)
+                return 64;
+            return 28;
+            }).text(d=>d)
+    console.log(selectedGames)
+}

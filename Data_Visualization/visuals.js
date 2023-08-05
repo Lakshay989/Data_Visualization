@@ -1,3 +1,4 @@
+let selectedGame = null
 document.addEventListener('DOMContentLoaded', () => {
     // Fetch the CSV file
     fetch('Video_Games.csv')
@@ -8,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const headers = rows[0].split(',');
             // console.log(headers);
             // console.log(rows)
-            // console.log(rows[0].split(','))
+            // console.log(rows[1].split(','))
 
             //NA sales = 5
             //EU sales = 6
@@ -40,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     enter.append('p').text((d, i) => d[0]).on("click", handleGameClick)
                 }
             );
-            gameList.on("click", handleEUClick);
+            // gameList.on("click", handleNAClick);
         })
         .catch(error => console.error('Error fetching the CSV file:', error));
 });
@@ -67,6 +68,10 @@ function handleGameClick(event, data) {
     }
     lastSelection = element;
 
+    // console.log(lastSelection._groups[0][0].__data__)
+    selectedGame = lastSelection._groups[0][0].__data__
+    selectedGameDisplay(selectedGame)
+    
     // data.sort(function(a, b) {
     //     return d3.ascending(a[0], b[0])
     // });
